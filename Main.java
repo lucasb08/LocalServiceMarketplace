@@ -13,6 +13,7 @@ public class Main {
         ArrayList<String> cart = new ArrayList<>();
         ArrayList<Double> ratesforbooking = new ArrayList<>();
         ArrayList<Integer> servicesAvailable = new ArrayList<>();
+
         servicesAvailable.add(0, 1);
         servicesAvailable.add(1, 1);
         servicesAvailable.add(2, 1);
@@ -23,7 +24,6 @@ public class Main {
         servicesAvailable.add(7, 1);
         servicesAvailable.add(8, 1);
 
-        int counter = 0;
 
         // introduction
 
@@ -56,8 +56,6 @@ public class Main {
                     serviceRates.add(sc.nextDouble());
                     sc.nextLine(); // fixes skipping issue
 
-                    counter++;
-
                     System.out.println("Your service has been added!");
 
                     System.out.println("Would you like to add another service? (yes/no)");
@@ -76,7 +74,7 @@ public class Main {
                 System.out.println("3. Childcare. (3).");
                 int optionsBooking = sc.nextInt();
 
-                switch(optionsBooking) {
+                switch(optionsBooking) { // switch case for different options of booking
                     case (1):
                             System.out.println("1. Name: Ludo's Cleaning Services. (1).");
                             if(servicesAvailable.get(0) == 0) {
@@ -101,7 +99,7 @@ public class Main {
                         int optionsCleaning = sc.nextInt();
 
                         if(optionsCleaning == 1) {
-                            if(servicesAvailable.get(0) > 0) {
+                            if(servicesAvailable.get(0) > 0) { // marks service as fully booked
                                 cart.add("Ludo's Cleaning Services");
                                 ratesforbooking.add(25.00);
                                 servicesAvailable.set(0, servicesAvailable.get(0) - 1);
@@ -269,7 +267,7 @@ public class Main {
                 System.out.println("Checkout. (3).");
                 int optionsCheckout = sc.nextInt();
 
-                if(optionsCheckout == 1) {
+                if(optionsCheckout == 1) { // if the user chooses to view their cart
 
                     System.out.println(cart);
 
@@ -281,7 +279,7 @@ public class Main {
                     int remove = sc.nextInt();
                     String removedService = cart.get(remove - 1);
 
-                    if(removedService.equals("Ludo's Cleaning Services")) {
+                    if(removedService.equals("Ludo's Cleaning Services")) { // changes availability of service back to normal
                         servicesAvailable.set(0, 1);
                     } else if(removedService.equals("Clean Floors inc.")) {
                         servicesAvailable.set(1, 1);
@@ -307,17 +305,17 @@ public class Main {
                     ratesforbooking.remove(remove - 1);
                     System.out.println("Updated cart: " + (cart));
 
-                } else if(optionsCheckout == 3) {
+                } else if(optionsCheckout == 3) { // if user decides to check out
 
                     System.out.println("Invoice: ");
                     int counter3 = 0;
-                    for(String i : cart) {
+                    for(String i : cart) { // displays invoice breaking down total cost and hourly rates
                         System.out.println(i + " Hourly Rate: $" + ratesforbooking.get(counter3) + " per hour.");
                         counter3++;
                     }
                     System.out.print("Your total is: ");
                     double totalSum = 0;
-                    for(Double i : ratesforbooking) {
+                    for(Double i : ratesforbooking) { // adds the hourly rates together to get the total cost
                         totalSum += i;
                     }
                     System.out.println("$" + totalSum);
