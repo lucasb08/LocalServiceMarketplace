@@ -1,4 +1,4 @@
-//NAME: Lucas Bustos
+//NAME: Lucas Bustos Ortega
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -26,7 +26,8 @@ public class Main {
             System.out.println("Add a service (1).");
             System.out.println("Book a service (2).");
             System.out.println("Edit your cart/checkout. (3).");
-            System.out.println("Exit (4).");
+            System.out.println("View your added services. (4).");
+            System.out.println("Exit (5)");
             int options = sc.nextInt();
 
             sc.nextLine(); // fixes skipping issue
@@ -64,10 +65,11 @@ public class Main {
                 System.out.println("2. Tutoring. (2).");
                 System.out.println("3. Childcare. (3).");
                 int optionsBooking = sc.nextInt();
+                String cleaning1 = "1. Name: Ludo's Cleaning Services. (1).";
 
                 switch(optionsBooking) {
                     case (1):
-                        System.out.println("1. Name: Ludo's Cleaning Services. (1).");
+                        System.out.println(cleaning1);
                         System.out.println("Hourly Rate: $25.00/hour.");
                         System.out.println("2. Name: Clean Floors inc. (2).");
                         System.out.println("Hourly Rate: $22.00/hour.");
@@ -80,6 +82,7 @@ public class Main {
                             cart.add("Ludo's Cleaning Services");
                             System.out.println("Your order has been added to your cart.");
                             ratesforbooking.add(25.00);
+                            cleaning1 = cleaning1 + "(FULLY BOOKED).";
 
                         } else if(optionsCleaning == 2) {
                             cart.add("Clean Floors inc.");
@@ -107,6 +110,7 @@ public class Main {
                         System.out.println("3. Name: Top Tier Tutoring. (3).");
                         System.out.println("Hourly Rate: $18.00/hour.");
                         int optionsTutoring = sc.nextInt();
+                        
 
                         if(optionsTutoring == 1) {
                             cart.add("Marcus' Tutoring Classes");
@@ -168,7 +172,7 @@ public class Main {
                         break;
                 }
 
-            } else if(options == 3) { // if user chooses to exit program
+            } else if(options == 3) { // if user chooses edit their cart/checkout
                 System.out.println("Would you like to: ");
                 System.out.println("View your cart. (1).");
                 System.out.println("Remove items from your cart. (2).");
@@ -186,6 +190,7 @@ public class Main {
                     System.out.println("Enter the position the item is in to remove it.");
                     int remove = sc.nextInt();
                     cart.remove(remove - 1);
+                    ratesforbooking.remove(remove - 1);
                     System.out.println("Updated cart: " + (cart));
 
                 } else if(optionsCheckout == 3) {
@@ -202,10 +207,15 @@ public class Main {
                         totalSum += i;
                     }
                     System.out.println("$" + totalSum);
+                    cart.removeAll(cart);
                     System.out.println("Thank you for shopping with ABay.");
                 }
-            } else if(options == 4) {
-                System.out.println("Thank you for using ABay, come again soon.");
+            } else if(options == 4) { // if user decides to view their added services
+            	System.out.println("Your services: ");
+            	System.out.println(serviceNames);
+            	
+            } else if(options == 5) { // if user decides to exit the program
+            	System.out.println("Thank you for using ABay, come again soon.");
                 isRunning = false;
             }
         }
