@@ -12,6 +12,16 @@ public class Main {
         ArrayList<Double> serviceRates = new ArrayList<>();
         ArrayList<String> cart = new ArrayList<>();
         ArrayList<Double> ratesforbooking = new ArrayList<>();
+        ArrayList<Integer> servicesAvailable = new ArrayList<>();
+        servicesAvailable.add(0, 1);
+        servicesAvailable.add(1, 1);
+        servicesAvailable.add(2, 1);
+        servicesAvailable.add(3, 1);
+        servicesAvailable.add(4, 1);
+        servicesAvailable.add(5, 1);
+        servicesAvailable.add(6, 1);
+        servicesAvailable.add(7, 1);
+        servicesAvailable.add(8, 1);
 
         int counter = 0;
 
@@ -65,34 +75,60 @@ public class Main {
                 System.out.println("2. Tutoring. (2).");
                 System.out.println("3. Childcare. (3).");
                 int optionsBooking = sc.nextInt();
-                String cleaning1 = "1. Name: Ludo's Cleaning Services. (1).";
 
                 switch(optionsBooking) {
                     case (1):
-                        System.out.println(cleaning1);
-                        System.out.println("Hourly Rate: $25.00/hour.");
-                        System.out.println("2. Name: Clean Floors inc. (2).");
-                        System.out.println("Hourly Rate: $22.00/hour.");
-                        System.out.println("3. Name: Smiling Surfaces Cleaning. (3).");
-                        System.out.println("Hourly Rate: $20.00/ hour.");
+                            System.out.println("1. Name: Ludo's Cleaning Services. (1).");
+                            if(servicesAvailable.get(0) == 0) {
+                                System.out.println("Fully Booked.");
+                            } else {
+                                System.out.println("Hourly Rate: $25.00/hour.");
+                            }
+                            System.out.println("2. Name: Clean Floors inc. (2).");
+                            if(servicesAvailable.get(1) == 0) {
+                                System.out.println("Fully Booked.");
+                            } else {
+                                System.out.println("Hourly Rate: $22.00/hour.");
+                            }
+                            System.out.println("3. Name: Smiling Surfaces Cleaning. (3).");
+                            if(servicesAvailable.get(2) == 0) {
+                                System.out.println("Fully Booked.");
+                            } else {
+                                System.out.println("Hourly Rate: $20.00/ hour.");
+                            }
+
 
                         int optionsCleaning = sc.nextInt();
 
                         if(optionsCleaning == 1) {
-                            cart.add("Ludo's Cleaning Services");
-                            System.out.println("Your order has been added to your cart.");
-                            ratesforbooking.add(25.00);
-                            cleaning1 = cleaning1 + "(FULLY BOOKED).";
+                            if(servicesAvailable.get(0) > 0) {
+                                cart.add("Ludo's Cleaning Services");
+                                ratesforbooking.add(25.00);
+                                servicesAvailable.set(0, servicesAvailable.get(0) - 1);
+                                System.out.println("Your order has been added to your cart.");
+                            } else {
+                                System.out.println("This service is fully booked.");
+                            }
 
                         } else if(optionsCleaning == 2) {
-                            cart.add("Clean Floors inc.");
-                            System.out.println("Your order has been added to your cart.");
-                            ratesforbooking.add(22.00);
+                            if(servicesAvailable.get(1) > 0) {
+                                cart.add("Clean Floors inc.");
+                                ratesforbooking.add(22.00);
+                                servicesAvailable.set(1, servicesAvailable.get(1) - 1);
+                                System.out.println("Your order has been added to your cart.");
+                            } else {
+                                System.out.println("This service is fully booked.");
+                            }
 
                         } else if(optionsCleaning == 3) {
-                            cart.add("Smiling Surfaces Cleaning");
-                            System.out.println("Your order has been added to your cart.");
-                            ratesforbooking.add(20.00);
+                            if(servicesAvailable.get(2) > 0) {
+                                cart.add("Smiling Surfaces Cleaning");
+                                ratesforbooking.add(20.00);
+                                servicesAvailable.set(2, servicesAvailable.get(2) - 1);
+                                System.out.println("Your order has been added to your cart.");
+                            } else {
+                                System.out.println("This service is fully booked.");
+                            }
 
                         } else {
                             System.out.println("Invalid input please try again.");
@@ -104,31 +140,58 @@ public class Main {
 
                     case (2):
                         System.out.println("1. Name: Marcus' Tutoring Classes. (1).");
-                        System.out.println("Hourly Rate: $17.50/hour.");
+                        if(servicesAvailable.get(3) == 0) {
+                            System.out.println("Fully Booked.");
+                        } else {
+                            System.out.println("Hourly Rate: $17.50/hour.");
+                        }
                         System.out.println("2. Name: A+ Tutoring & Learning. (2).");
-                        System.out.println("Hourly Rate: $19.00/hour.");
+                        if(servicesAvailable.get(4) == 0) {
+                            System.out.println("Fully Booked.");
+                        } else {
+                            System.out.println("Hourly Rate: $19.00/hour.");
+                        }
                         System.out.println("3. Name: Top Tier Tutoring. (3).");
-                        System.out.println("Hourly Rate: $18.00/hour.");
+                        if(servicesAvailable.get(5) == 0) {
+                            System.out.println("Fully Booked.");
+                        } else {
+                            System.out.println("Hourly Rate: $18.00/hour.");
+                        }
                         int optionsTutoring = sc.nextInt();
-                        
+
 
                         if(optionsTutoring == 1) {
-                            cart.add("Marcus' Tutoring Classes");
-                            System.out.println("Your order has been added to your cart.");
-                            ratesforbooking.add(17.50);
+                            if(servicesAvailable.get(3) > 0) {
+                                cart.add("Marcus' Tutoring Classes");
+                                ratesforbooking.add(17.50);
+                                servicesAvailable.set(3, servicesAvailable.get(3) - 1);
+                                System.out.println("Your order has been added to your cart.");
+                            } else {
+                                System.out.println("This service is fully booked.");
+                            }
 
                         } else if(optionsTutoring == 2) {
-                            cart.add("A+ Tutoring & Learning");
-                            System.out.println("Your order has been added to your cart.");
-                            ratesforbooking.add(19.00);
+                            if(servicesAvailable.get(4) > 0) {
+                                cart.add("A+ Tutoring & Learning");
+                                ratesforbooking.add(19.00);
+                                servicesAvailable.set(4, servicesAvailable.get(4) - 1);
+                                System.out.println("Your order has been added to your cart.");
+                            } else {
+                                System.out.println("This service is fully booked.");
+                            }
 
                         } else if(optionsTutoring == 3) {
-                            cart.add("Top Tier Tutoring");
-                            System.out.println("Your order has been added to your cart.");
-                            ratesforbooking.add(18.00);
+                            if(servicesAvailable.get(5) > 0) {
+                                cart.add("Top Tier Tutoring");
+                                ratesforbooking.add(18.00);
+                                servicesAvailable.set(5, servicesAvailable.get(5) - 1);
+                                System.out.println("Your order has been added to your cart.");
+                            } else {
+                                System.out.println("This service is fully booked.");
+                            }
 
                         } else {
-                            System.out.println("Inalid input, please try again.");
+                            System.out.println("Invalid input, please try again.");
                         }
                         System.out.println("Your cart: " + (cart));
 
@@ -137,27 +200,54 @@ public class Main {
 
                     case (3):
                         System.out.println("1. Name: Betty's Babysitting. (1).");
-                        System.out.println("Hourly Rate: $20.50/hour.");
+                        if(servicesAvailable.get(6) == 0) {
+                            System.out.println("Fully Booked.");
+                        } else {
+                            System.out.println("Hourly Rate: $20.50/hour.");
+                        }
                         System.out.println("2. Name: Brandon's Childcare Services. (2).");
-                        System.out.println("Hourly Rate: $21.00/hour.");
+                        if(servicesAvailable.get(7) == 0) {
+                            System.out.println("Fully Booked.");
+                        } else {
+                            System.out.println("Hourly Rate: $21.00/hour.");
+                        }
                         System.out.println("3. Name: Babysitting & Nannies inc. (3).");
-                        System.out.println("Hourly Rate: $30.00/hour.");
+                        if(servicesAvailable.get(8) == 0) {
+                            System.out.println("Fully Booked.");
+                        } else {
+                            System.out.println("Hourly Rate: $30.00/hour.");
+                        }
                         int optionsChildcare = sc.nextInt();
 
                         if(optionsChildcare == 1) {
-                            cart.add("Betty's Babysitting");
-                            System.out.println("Your order has been added to your cart.");
-                            ratesforbooking.add(20.50);
+                            if(servicesAvailable.get(6) > 0) {
+                                cart.add("Betty's Babysitting");
+                                ratesforbooking.add(20.50);
+                                servicesAvailable.set(6, servicesAvailable.get(6) - 1);
+                                System.out.println("Your order has been added to your cart.");
+                            } else {
+                                System.out.println("This service is fully booked.");
+                            }
 
                         } else if(optionsChildcare == 2) {
-                            cart.add("Brandon's Childcare Services");
-                            System.out.println("Your order has been added to your cart.");
-                            ratesforbooking.add(21.00);
+                            if(servicesAvailable.get(7) > 0) {
+                                cart.add("Brandon's Childcare Services");
+                                ratesforbooking.add(21.00);
+                                servicesAvailable.set(7, servicesAvailable.get(7) - 1);
+                                System.out.println("Your order has been added to your cart.");
+                            } else {
+                                System.out.println("This service is fully booked.");
+                            }
 
                         } else if(optionsChildcare == 3) {
-                            cart.add("Babysitting & Nannies inc.");
-                            System.out.println("Your order has been added to your cart.");
-                            ratesforbooking.add(30.00);
+                            if(servicesAvailable.get(8) > 0) {
+                                cart.add("Babysitting & Nannies inc.");
+                                ratesforbooking.add(30.00);
+                                servicesAvailable.set(8, servicesAvailable.get(8) - 1);
+                                System.out.println("Your order has been added to your cart.");
+                            } else {
+                                System.out.println("This service is fully booked.");
+                            }
 
                         } else {
                             System.out.println("Invalid input, please try again.");
@@ -189,6 +279,30 @@ public class Main {
                     System.out.println(cart);
                     System.out.println("Enter the position the item is in to remove it.");
                     int remove = sc.nextInt();
+                    String removedService = cart.get(remove - 1);
+
+                    if(removedService.equals("Ludo's Cleaning Services")) {
+                        servicesAvailable.set(0, 1);
+                    } else if(removedService.equals("Clean Floors inc.")) {
+                        servicesAvailable.set(1, 1);
+                    } else if(removedService.equals("Smiling Surfaces Cleaning")) {
+                        servicesAvailable.set(2, 1);
+                    } else if(removedService.equals("Marcus' Tutoring Classes")) {
+                        servicesAvailable.set(3, 1);
+                    } else if(removedService.equals("A+ Tutoring & Learning")) {
+                        servicesAvailable.set(4, 1);
+                    } else if(removedService.equals("Top Tier Tutoring")) {
+                        servicesAvailable.set(5, 1);
+                    } else if(removedService.equals("Betty's Babysitting")) {
+                        servicesAvailable.set(6, 1);
+                    } else if(removedService.equals("Brandon's Childcare Services")) {
+                        servicesAvailable.set(7, 1);
+                    } else if(removedService.equals("Babysitting & Nannies inc.")) {
+                        servicesAvailable.set(8, 1);
+                    } else {
+                        System.out.println("Invalid input, please try again.");
+                    }
+
                     cart.remove(remove - 1);
                     ratesforbooking.remove(remove - 1);
                     System.out.println("Updated cart: " + (cart));
@@ -211,11 +325,11 @@ public class Main {
                     System.out.println("Thank you for shopping with ABay.");
                 }
             } else if(options == 4) { // if user decides to view their added services
-            	System.out.println("Your services: ");
-            	System.out.println(serviceNames);
-            	
+                System.out.println("Your services: ");
+                System.out.println(serviceNames);
+
             } else if(options == 5) { // if user decides to exit the program
-            	System.out.println("Thank you for using ABay, come again soon.");
+                System.out.println("Thank you for using ABay, come again soon.");
                 isRunning = false;
             }
         }
